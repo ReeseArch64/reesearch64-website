@@ -8,6 +8,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { aboutMe } from "@/constants/aboutMe";
 
 export default function Portfolio() {
   return (
@@ -41,15 +42,7 @@ export default function Portfolio() {
         <h2 className="text-3xl font-bold mb-6">Sobre Mim</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <p className="text-lg leading-relaxed">
-              Sou um desenvolvedor front-end apaixonado por criar interfaces
-              bonitas e funcionais. Com 5 anos de experiência, especializei-me
-              em React, Next.js e design de UI/UX.
-            </p>
-            <p className="text-lg leading-relaxed mt-4">
-              Quando não estou codando, gosto de fotografar, viajar e aprender
-              sobre design.
-            </p>
+            <p className="text-lg leading-relaxed">{aboutMe}</p>
           </div>
           <div className="space-y-4">
             <div>

@@ -1,14 +1,14 @@
 export interface ApiDataInterface {
   avatar: string;
   person: PersonInterface;
-  education: IEducationInterface[];
-  techs: string[];
-  projects: IProjectInterface[];
-  contact: IContactInterface;
-  socialMedia: ISocialMediaInterface;
+  education: EducationInterface[];
+  techs: TechsInterface;
+  projects: ProjectInterface[];
+  contact: ContactInterface;
+  socialMedia: SocialMediaInterface;
 }
 
-interface PersonInterface {
+export interface PersonInterface {
   name: string;
   about: string;
   role: string;
@@ -16,15 +16,15 @@ interface PersonInterface {
   location: string;
 }
 
-interface IEducationInterface {
+export interface EducationInterface {
   institution: string;
   course: string;
-  startDate: string;
-  endDate: string;
+  startDate: string; // YYYY-MM-DD
+  endDate: string; // YYYY-MM-DD
   description: string;
 }
 
-interface IProjectInterface {
+export interface ProjectInterface {
   name: string;
   description: string;
   image: string;
@@ -34,12 +34,12 @@ interface IProjectInterface {
   demoLink: string;
 }
 
-interface IContactInterface {
+export interface ContactInterface {
   email: string;
   phone: string;
 }
 
-interface ISocialMediaInterface {
+export interface SocialMediaInterface {
   linkedin: string;
   github: string;
   instagram: string;
@@ -49,7 +49,53 @@ interface ISocialMediaInterface {
   tiktok: string;
 }
 
-enum ProjectType {
+export interface TechsInterface {
+  langs: string[];
+  frameworks: FrameworksInterface;
+  orms: string[];
+  tools: string[];
+  cloud: string[];
+  databases: string[];
+  devops: string[];
+}
+
+export interface FrameworksInterface {
+  backend: BackendFrameworks;
+  frontend: FrontendFrameworks;
+  mobile: MobileFrameworks;
+  desktop: DesktopFrameworks;
+  game: GameFrameworks;
+}
+
+export interface BackendFrameworks {
+  csharp: string[];
+  node: string[];
+  python: string[];
+}
+
+export interface FrontendFrameworks {
+  javaScript: string[];
+  css: string[];
+}
+
+export interface MobileFrameworks {
+  javaScript: string[];
+  dart: string[];
+}
+
+export interface DesktopFrameworks {
+  java: string[];
+  csharp: string[];
+  python: string[];
+  javascript: string[];
+}
+
+export interface GameFrameworks {
+  javascript: string[];
+  csharp: string[];
+}
+
+export enum ProjectType {
   WEB = "web",
   MOBILE = "mobile",
   DESKTOP = "desktop",

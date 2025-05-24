@@ -4,6 +4,7 @@ import About from "@/components/portfolio/About";
 import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
+import TechStack from "@/components/portfolio/TechStack";
 
 export default async function Portfolio() {
   const data = await getData();
@@ -13,6 +14,7 @@ export default async function Portfolio() {
       <Header data={data} />
       <About data={data} />
       <Projects data={data} />
+      <TechStack techs={data.techs} />
       <Contact data={data} />
       <Footer data={data} />
     </div>

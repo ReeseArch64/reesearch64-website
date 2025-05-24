@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import type { ApiDataInterface } from "@/interfaces/ApiDataInterface";
 
 const CATEGORY_CONFIG = {
   langs: { color: "text-blue-600", icon: "💻", label: "Languages" },
@@ -17,36 +16,60 @@ const CATEGORY_CONFIG = {
 
 type TechCategory = keyof typeof CATEGORY_CONFIG;
 
+interface TechItem {
+  name: string;
+  category: TechCategory;
+  subcategory?: string;
+}
+
+interface FrameworkSubcategories {
+  [subcategory: string]: string[];
+}
+
+interface FrameworkCategories {
+  [frameworkType: string]: FrameworkSubcategories;
+}
+
+interface TechStack {
+  langs?: string[];
+  frameworks?: FrameworkCategories;
+  orms?: string[];
+  tools?: string[];
+  cloud?: string[];
+  databases?: string[];
+  devops?: string[];
+}
+
 export default function TechStackSearch({
   techs,
 }: {
-  techs: ApiDataInterface["techs"];
+  techs: TechStack | undefined;
 }) {
   const [search, setSearch] = useState("");
 
-  const allTechs = Object.entries(techs ?? {}).flatMap(([category, items]) => {
-    if (category === "frameworks" && typeof items === "object") {
-      const subItems = Object.entries(items).flatMap(([sub, techArr]) =>
-        Object.entries(techArr).flatMap(([subName, techList]) =>
-          Array.isArray(techList)
-            ? techList.map((tech) => ({
-                name: tech,
-                category: category as TechCategory,
-                subcategory: `${sub} - ${subName}`,
-              }))
-            : []
-        )
-      );
-      return subItems;
-    }
+  const allTechs: TechItem[] = Object.entries(techs ?? {}).flatMap(
+    ([category, items]) => {
+      if (category === "frameworks" && typeof items === "object") {
+        const frameworkItems = items as FrameworkCategories;
+        return Object.entries(frameworkItems).flatMap(([sub, techArr]) =>
+          Object.entries(techArr).flatMap(([subName, techList]) =>
+            techList.map((tech) => ({
+              name: tech,
+              category: category as TechCategory,
+              subcategory: `${sub} - ${subName}`,
+            }))
+          )
+        );
+      }
 
-    return Array.isArray(items)
-      ? items.map((tech) => ({
-          name: tech,
-          category: category as TechCategory,
-        }))
-      : [];
-  });
+      return Array.isArray(items)
+        ? items.map((tech) => ({
+            name: tech,
+            category: category as TechCategory,
+          }))
+        : [];
+    }
+  );
 
   const filtered =
     search.trim() === ""

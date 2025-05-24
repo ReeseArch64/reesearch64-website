@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import type { ApiDataInterface } from "@/interfaces/ApiDataInterface";
 import { motion } from "framer-motion";
+import type {JSX} from "react";
 import {
   FaLinkedin,
   FaGithub,
@@ -15,7 +16,15 @@ import {
   FaPhone,
 } from "react-icons/fa";
 
-const SOCIAL_ICONS = {
+interface SocialIconsType {
+  [key: string]: {
+    icon: JSX.Element;
+    label: string;
+    color: string;
+  };
+}
+
+const SOCIAL_ICONS: SocialIconsType = {
   linkedin: {
     icon: <FaLinkedin className="w-5 h-5" />,
     label: "LinkedIn",
@@ -59,6 +68,8 @@ export default function Contact({ data }: { data: ApiDataInterface }) {
 
   const hasContact = contact.email || contact.phone;
   const hasSocial = Object.values(social).some(Boolean);
+
+  const MotionButton = motion(Button);
 
   return (
     <section
@@ -137,11 +148,13 @@ export default function Contact({ data }: { data: ApiDataInterface }) {
             {hasSocial ? (
               <div className="flex flex-wrap gap-4">
                 {Object.entries(SOCIAL_ICONS).map(([key, config]) => {
-                  if (social[key]) {
+                  const url = social[key as keyof typeof social];
+
+                  if (url) {
                     return (
                       <motion.a
                         key={key}
-                        href={social[key]}
+                        href={url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700 ${config.color} transition-all`}
@@ -217,14 +230,14 @@ export default function Contact({ data }: { data: ApiDataInterface }) {
                 required
               ></textarea>
             </div>
-            <Button
+            <MotionButton
               type="submit"
               className="w-full py-3 text-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               Enviar Mensagem
-            </Button>
+            </MotionButton>
           </form>
         </motion.div>
       </div>

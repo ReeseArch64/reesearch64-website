@@ -19,13 +19,13 @@ interface TechItem {
 }
 
 export default function TechStackSearch({
-  techs,
+  data,
 }: {
-  techs: TechsInterface | undefined;
+  data: TechsInterface | undefined;
 }) {
   const [search, setSearch] = useState("");
 
-  const allTechs: TechItem[] = Object.entries(techs ?? {}).flatMap(
+  const allTechs: TechItem[] = Object.entries(data ?? {}).flatMap(
     ([category, items]) => {
       if (category === "frameworks" && typeof items === "object") {
         const frameworkItems = items as FrameworksInterface;

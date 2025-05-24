@@ -10,12 +10,14 @@ import {
 import type { ApiDataInterface } from "@/interfaces/ApiDataInterface";
 
 export default function Projects({ data }: { data: ApiDataInterface }) {
+  const projects = Array.isArray(data.projects) ? data.projects : [];
+
   return (
     <section id="projects" className="max-w-6xl mx-auto py-12">
       <h2 className="text-3xl font-bold mb-6">Projetos</h2>
-      {data.projects.length > 0 ? (
+      {projects.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.projects.map((project, index) => (
+          {projects.map((project, index) => (
             <Card key={index}>
               <CardHeader>
                 <Image

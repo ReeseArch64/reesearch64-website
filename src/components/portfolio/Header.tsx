@@ -5,15 +5,17 @@ import type { ApiDataInterface } from "@/interfaces/ApiDataInterface";
 export default function Header({ data }: { data: ApiDataInterface }) {
   return (
     <header className="max-w-6xl mx-auto py-8 flex flex-col md:flex-row items-center gap-8">
-      <Avatar className="h-32 w-32">
-        <AvatarImage src={data.avatar} alt="Profile" />
-        <AvatarFallback>
-          {data.person.name
-            .split(" ")
-            .map((n) => n[0])
-            .join("")}
-        </AvatarFallback>
-      </Avatar>
+      <div className="rounded-full p-1 bg-[conic-gradient(at_top_left,_red,_yellow,_green,_blue,_red)]">
+        <Avatar className="h-32 w-32 border-4 border-background">
+          <AvatarImage src={data.avatar} alt="Profile" />
+          <AvatarFallback>
+            {data.person.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
+        </Avatar>
+      </div>
 
       <div className="text-center md:text-left">
         <h1 className="text-4xl font-bold tracking-tight">

@@ -19,8 +19,8 @@ export interface PersonInterface {
 export interface EducationInterface {
   institution: string;
   course: string;
-  startDate: string; // YYYY-MM-DD
-  endDate: string; // YYYY-MM-DD
+  startDate: string;
+  endDate: string;
   description: string;
 }
 
@@ -57,6 +57,13 @@ export interface TechsInterface {
   cloud: string[];
   databases: string[];
   devops: string[];
+  runtimes: string[];
+  packageManagers: string[];
+  testing: string[];
+  design: string[];
+  methodologies: string[];
+  versionControl: string[];
+  architecture: string[];
 }
 
 export interface FrameworksInterface {

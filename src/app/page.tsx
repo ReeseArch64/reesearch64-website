@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { aboutMe } from "@/constants/aboutMe";
+import { avatar } from "@/constants/avatar";
 
 export default function Portfolio() {
   return (
@@ -16,7 +17,7 @@ export default function Portfolio() {
       {/* Header */}
       <header className="max-w-6xl mx-auto py-8 flex flex-col md:flex-row items-center gap-8">
         <Avatar className="h-32 w-32">
-          <AvatarImage src="/profile.jpg" alt="Profile" />
+          <AvatarImage src={avatar} alt="Profile" />
           <AvatarFallback>JP</AvatarFallback>
         </Avatar>
 

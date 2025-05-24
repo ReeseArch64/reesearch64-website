@@ -32,12 +32,13 @@ export default function TechStackSearch({
         return Object.entries(frameworkItems).flatMap(
           ([frameworkType, subcategories]) =>
             Object.entries(subcategories).flatMap(([subcategory, techList]) =>
-              //@ts-ignore
-              techList.map((tech) => ({
-                name: tech,
-                category: "frameworks" as TechCategory,
-                subcategory: `${frameworkType} - ${subcategory}`,
-              }))
+              Array.isArray(techList)
+                ? techList.map((tech) => ({
+                    name: tech,
+                    category: "frameworks" as TechCategory,
+                    subcategory: `${frameworkType} - ${subcategory}`,
+                  }))
+                : []
             )
         );
       }
@@ -49,7 +50,7 @@ export default function TechStackSearch({
           }))
         : [];
     }
-  );
+  );  
 
   const filtered =
     search.trim() === ""

@@ -46,9 +46,11 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background p-4 md:p-8 font-sans">
       <Header data={data} />
       <About data={data} />
-      <EducationSection
-        data={Array.isArray(data.education) ? data.education : []}
-      />
+
+      {data.education &&
+        Array.isArray(data.education) &&
+        data.education.length > 0 && <EducationSection data={data.education} />}
+
       <Projects data={data} />
       <TechStack data={data.techs ?? {}} />
       <Contact data={data} />

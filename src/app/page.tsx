@@ -5,6 +5,7 @@ import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 import TechStack from "@/components/portfolio/TechStack";
+import EducationSection from "@/components/portfolio/Education";
 
 export default async function Portfolio() {
   const data = await getData();
@@ -13,6 +14,7 @@ export default async function Portfolio() {
     <div className="min-h-screen bg-background p-4 md:p-8 font-sans">
       <Header data={data} />
       <About data={data} />
+      <EducationSection data={data.education} />
       <Projects data={data} />
       <TechStack techs={data.techs} />
       <Contact data={data} />

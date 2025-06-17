@@ -1,5 +1,3 @@
-import type { ApiDataInterface } from "@/interfaces/ApiDataInterface";
-
 const SECTION_STYLE = "max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8";
 const TEXT_STYLE = "text-lg leading-relaxed text-gray-800 dark:text-gray-200";
 
@@ -35,9 +33,14 @@ const formatAboutText = (text: string) => {
   });
 };
 
-export default function About({ data }: { data: ApiDataInterface }) {
-  const about = data.person?.about?.trim();
-  const formattedAbout = about ? formatAboutText(about) : null;
+interface IProps {
+  about: string;
+}
+
+export default function About({ about }: IProps) {
+  const data = about?.trim();
+
+  const formattedAbout = about ? formatAboutText(data) : null;
 
   return (
     <section

@@ -1,111 +1,101 @@
 export interface ApiDataInterface {
-  avatar: string;
-  person: PersonInterface;
-  education: EducationInterface[];
-  techs: TechsInterface;
-  projects: ProjectInterface[];
-  contact: ContactInterface;
-  socialMedia: SocialMediaInterface;
+  avatar: string
+  person: PersonInterface
+  techs: TechsInterface
+  projects: ProjectInterface[]
+  contacts: ContactInterface
 }
 
 export interface PersonInterface {
-  name: string;
-  about: string;
-  role: string;
-  level: string;
-  location: string;
-}
-
-export interface EducationInterface {
-  institution: string;
-  course: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-}
-
-export interface ProjectInterface {
-  name: string;
-  description: string;
-  image: string;
-  type: ProjectType;
-  technologies: string[];
-  repositoryCode: string;
-  demoLink: string;
-}
-
-export interface ContactInterface {
-  email: string;
-  phone: string;
-}
-
-export interface SocialMediaInterface {
-  linkedin: string;
-  github: string;
-  instagram: string;
-  twitter: string;
-  facebook: string;
-  youtube: string;
-  tiktok: string;
+  name: string
+  about: string
+  role: string
+  level: string
+  location: string
+  languages: string[]
 }
 
 export interface TechsInterface {
-  langs: string[];
-  frameworks: FrameworksInterface;
-  orms: string[];
-  tools: string[];
-  cloud: string[];
-  databases: string[];
-  devops: string[];
-  runtimes: string[];
-  packageManagers: string[];
-  testing: string[];
-  design: string[];
-  methodologies: string[];
-  versionControl: string[];
-  architecture: string[];
+  langs: string[]
+  frameworks: FrameworksInterface
+  runtimes: string[]
+  orms: string[]
+  tools: string[]
+  cloud: string[]
+  databases: string[]
+  devops: string[]
+  packageManagers: string[]
+  testing: string[]
+  design: string[]
+  methodologies: string[]
+  versionControl: string[]
+  architecture: string[]
 }
 
 export interface FrameworksInterface {
-  backend: BackendFrameworks;
-  frontend: FrontendFrameworks;
-  mobile: MobileFrameworks;
-  desktop: DesktopFrameworks;
-  game: GameFrameworks;
+  backend: string[]
+  frontend: string[]
+  mobile: string[]
+  css: string[]
+  desktop: string[]
+  game: string[]
 }
 
-export interface BackendFrameworks {
-  csharp: string[];
-  node: string[];
-  python: string[];
+export interface ProjectInterface {
+  name: string
+  description: string
+  image: string
+  type: ProjectsType
+  categories: string[]
+  technologies: string[]
+  repositoryCode: string
+  demoLink: string
 }
 
-export interface FrontendFrameworks {
-  javaScript: string[];
-  css: string[];
+export enum ProjectsType {
+  FRONTEND,
+  BACKEND,
+  FULLSTACK,
+  API,
+  CLI,
+  LIBRARY,
+  MOBILE_NATIVE,
+  DESKTOP
 }
 
-export interface MobileFrameworks {
-  javaScript: string[];
-  dart: string[];
+export enum ProjectsCategories {
+  CRM,
+  ECOMMERCE,
+  LP,
+  PORTFOLIO,
+  BLOG,
+  DASHBOARD,
+  SOCIAL,
+  ADMIN_PANEL,
+  CHAT,
+  FORUM,
+  GAME,
+  EDUCATION,
+  HEALTHCARE,
+  FINANCE,
+  ENTERTAINMENT,
+  MARKETING,
+  NEWS,
+  OTHER
 }
 
-export interface DesktopFrameworks {
-  java: string[];
-  csharp: string[];
-  python: string[];
-  javascript: string[];
+export interface ContactInterface {
+  email: string
+  whatsapp: string
+  socialMedia: SocialMediaInterface
 }
 
-export interface GameFrameworks {
-  javascript: string[];
-  csharp: string[];
-}
-
-export enum ProjectType {
-  WEB = "web",
-  MOBILE = "mobile",
-  DESKTOP = "desktop",
-  GAME = "game",
-  OTHER = "other",
+export interface SocialMediaInterface {
+  linkedin: string
+  github: string
+  instagram: string
+  twitter: string
+  facebook: string
+  youtube: string
+  tiktok: string
 }

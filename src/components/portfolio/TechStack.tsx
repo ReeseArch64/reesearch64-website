@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
 import { useState } from "react";
@@ -18,11 +17,11 @@ interface TechItem {
   subcategory?: string;
 }
 
-export default function TechStackSearch({
-  data,
-}: {
-  data: TechsInterface | undefined;
-}) {
+interface IProps {
+  data: TechsInterface;
+}
+
+export default function TechStackSearch({ data }: IProps) {
   const [search, setSearch] = useState("");
 
   const allTechs: TechItem[] = Object.entries(data ?? {}).flatMap(
@@ -31,26 +30,26 @@ export default function TechStackSearch({
         const frameworkItems = items as FrameworksInterface;
         return Object.entries(frameworkItems).flatMap(
           ([frameworkType, subcategories]) =>
-            Object.entries(subcategories).flatMap(([subcategory, techList]) =>
-              Array.isArray(techList)
-                ? techList.map((tech) => ({
-                    name: tech,
-                    category: "frameworks" as TechCategory,
-                    subcategory: `${frameworkType} - ${subcategory}`,
-                  }))
-                : []
-            )
+            Array.isArray(subcategories)
+              ? subcategories.map((tech) => ({
+                  name: tech,
+                  category: "frameworks" as TechCategory,
+                  subcategory: frameworkType,
+                }))
+              : []
         );
       }
+
+      const validCategory = category === "rumtimes" ? "runtimes" : category;
 
       return Array.isArray(items)
         ? items.map((tech) => ({
             name: tech,
-            category: category as TechCategory,
+            category: validCategory as TechCategory,
           }))
         : [];
     }
-  );  
+  );
 
   const filtered =
     search.trim() === ""
@@ -74,7 +73,7 @@ export default function TechStackSearch({
 
       <div className="max-w-xl mx-auto mb-8">
         <Input
-          placeholder="Search technologies..."
+          placeholder="Pesquisar Stacks, Libs, Linguagens..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="rounded-xl px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500"
@@ -83,10 +82,12 @@ export default function TechStackSearch({
 
       {search.trim() === "" ? (
         <p className="text-center text-gray-500">
-          Type something to search for technologies.
+          Digite algo para pesquisar tecnologias.
         </p>
       ) : filtered.length === 0 ? (
-        <p className="text-center text-gray-500">No technologies found.</p>
+        <p className="text-center text-gray-500">
+          Nenhuma tecnologia encontrada.
+        </p>
       ) : (
         <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filtered.map(({ name, category, subcategory }) => {
@@ -98,7 +99,7 @@ export default function TechStackSearch({
 
             return (
               <motion.div
-                key={name}
+                key={`${name}-${subcategory ?? category}`}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

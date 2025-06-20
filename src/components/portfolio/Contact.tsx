@@ -1,4 +1,7 @@
-import type { ContactInterface, SocialMediaInterface } from "@/interfaces/ApiDataInterface";
+import type {
+  ContactInterface,
+  SocialMediaInterface,
+} from "@/interfaces/ApiDataInterface";
 import { motion } from "framer-motion";
 import type { JSX } from "react";
 import {
@@ -12,6 +15,7 @@ import {
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 interface SocialIconsType {
   [key: string]: {
@@ -26,60 +30,68 @@ interface IProps {
   contact: ContactInterface;
 }
 
-const SOCIAL_ICONS: SocialIconsType = {
-  linkedin: {
-    icon: <FaLinkedin className="w-5 h-5" />,
-    label: "LinkedIn",
-    color: "hover:text-[#0A66C2]",
-  },
-  github: {
-    icon: <FaGithub className="w-5 h-5" />,
-    label: "GitHub",
-    color: "hover:text-[#333] dark:hover:text-[#f5f5f5]",
-  },
-  twitter: {
-    icon: <FaTwitter className="w-5 h-5" />,
-    label: "Twitter",
-    color: "hover:text-[#1DA1F2]",
-  },
-  instagram: {
-    icon: <FaInstagram className="w-5 h-5" />,
-    label: "Instagram",
-    color: "hover:text-[#E1306C]",
-  },
-  facebook: {
-    icon: <FaFacebook className="w-5 h-5" />,
-    label: "Facebook",
-    color: "hover:text-[#1877F2]",
-  },
-  youtube: {
-    icon: <FaYoutube className="w-5 h-5" />,
-    label: "YouTube",
-    color: "hover:text-[#FF0000]",
-  },
-  tiktok: {
-    icon: <FaTiktok className="w-5 h-5" />,
-    label: "TikTok",
-    color: "hover:text-[#000000] dark:hover:text-[#69C9D0]",
-  },
+const formatPhoneNumber = (phone: string) => {
+  const cleaned = phone.replace(/\D/g, "");
+  const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+  if (match) {
+    return `(${match[1]}) ${match[2]}-${match[3]}`;
+  }
+  return phone;
 };
 
 export default function Contact({ social, contact }: IProps) {
+  const { t } = useTranslation();
+
+  const SOCIAL_ICONS: SocialIconsType = {
+    linkedin: {
+      icon: <FaLinkedin className="w-5 h-5" />,
+      label: t("contact.social.linkedin"),
+      color: "hover:text-[#0A66C2]",
+    },
+    github: {
+      icon: <FaGithub className="w-5 h-5" />,
+      label: t("contact.social.github"),
+      color: "hover:text-[#333] dark:hover:text-[#f5f5f5]",
+    },
+    twitter: {
+      icon: <FaTwitter className="w-5 h-5" />,
+      label: t("contact.social.twitter"),
+      color: "hover:text-[#1DA1F2]",
+    },
+    instagram: {
+      icon: <FaInstagram className="w-5 h-5" />,
+      label: t("contact.social.instagram"),
+      color: "hover:text-[#E1306C]",
+    },
+    facebook: {
+      icon: <FaFacebook className="w-5 h-5" />,
+      label: t("contact.social.facebook"),
+      color: "hover:text-[#1877F2]",
+    },
+    youtube: {
+      icon: <FaYoutube className="w-5 h-5" />,
+      label: t("contact.social.youtube"),
+      color: "hover:text-[#FF0000]",
+    },
+    tiktok: {
+      icon: <FaTiktok className="w-5 h-5" />,
+      label: t("contact.social.tiktok"),
+      color: "hover:text-[#000000] dark:hover:text-[#69C9D0]",
+    },
+  };
+
   const hasContact = contact.email || contact.whatsapp;
   const hasSocial = Object.values(social).some(Boolean);
 
   return (
-    <section
-      id="contact"
-      className="max-w-2xl mx-auto py-12 px-4 text-center"
-    >
+    <section id="contact" className="max-w-2xl mx-auto py-12 px-4 text-center">
       <motion.h2
         className="text-3xl font-bold mb-8 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Contato
+        {t("contact.title")}
       </motion.h2>
 
       <motion.p
@@ -88,7 +100,7 @@ export default function Contact({ social, contact }: IProps) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        Interessado em trabalhar juntos? Entre em contato!
+        {t("contact.subtitle")}
       </motion.p>
 
       {hasContact ? (
@@ -122,15 +134,14 @@ export default function Contact({ social, contact }: IProps) {
                 rel="noopener noreferrer"
                 className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
               >
-                {contact.whatsapp}
+                {formatPhoneNumber(contact.whatsapp)}
               </a>
             </div>
           )}
-
         </motion.div>
       ) : (
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-10">
-          Nenhuma informação de contato disponível no momento.
+          {t("contact.noContactInfo")}
         </p>
       )}
 
@@ -141,7 +152,7 @@ export default function Contact({ social, contact }: IProps) {
         transition={{ delay: 0.4 }}
       >
         <h3 className="font-semibold text-xl text-gray-900 dark:text-white">
-          Redes Sociais
+          {t("contact.socialTitle")}
         </h3>
         {hasSocial ? (
           <div className="flex flex-wrap justify-center gap-4">
@@ -169,7 +180,7 @@ export default function Contact({ social, contact }: IProps) {
           </div>
         ) : (
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Nenhuma rede social cadastrada no momento.
+            {t("contact.noSocialInfo")}
           </p>
         )}
       </motion.div>

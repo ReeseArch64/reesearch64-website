@@ -8,6 +8,7 @@ import type {
   FrameworksInterface,
 } from "@/interfaces/ApiDataInterface";
 import { CATEGORY_CONFIG } from "../constants/categories";
+import { useTranslation } from "react-i18next";
 
 type TechCategory = keyof typeof CATEGORY_CONFIG;
 
@@ -23,6 +24,8 @@ interface IProps {
 
 export default function TechStackSearch({ data }: IProps) {
   const [search, setSearch] = useState("");
+  
+  const { t } = useTranslation();
 
   const allTechs: TechItem[] = Object.entries(data ?? {}).flatMap(
     ([category, items]) => {
@@ -40,7 +43,7 @@ export default function TechStackSearch({ data }: IProps) {
         );
       }
 
-      const validCategory = category === "rumtimes" ? "runtimes" : category;
+      const validCategory = category === "runtimes" ? "runtimes" : category;
 
       return Array.isArray(items)
         ? items.map((tech) => ({
@@ -68,12 +71,12 @@ export default function TechStackSearch({ data }: IProps) {
         transition={{ duration: 0.5 }}
         className="text-4xl font-extrabold mb-6 text-center text-gray-800"
       >
-        Tech Stack
+        {t("techStack.title")}
       </motion.h2>
 
       <div className="max-w-xl mx-auto mb-8">
         <Input
-          placeholder="Pesquisar Stacks, Libs, Linguagens..."
+          placeholder={t("techStack.searchPlaceholder")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="rounded-xl px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500"
@@ -82,11 +85,11 @@ export default function TechStackSearch({ data }: IProps) {
 
       {search.trim() === "" ? (
         <p className="text-center text-gray-500">
-          Digite algo para pesquisar tecnologias.
+          {t("techStack.emptySearchMessage")}
         </p>
       ) : filtered.length === 0 ? (
         <p className="text-center text-gray-500">
-          Nenhuma tecnologia encontrada.
+          {t("techStack.noResultsMessage")}
         </p>
       ) : (
         <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -94,7 +97,7 @@ export default function TechStackSearch({ data }: IProps) {
             const config = CATEGORY_CONFIG[category] ?? {
               color: "text-gray-600",
               icon: "❓",
-              label: "Other",
+              label: t("categories.other"),
             };
 
             return (
@@ -111,7 +114,7 @@ export default function TechStackSearch({ data }: IProps) {
                   {name}
                 </div>
                 <div className="text-sm text-gray-500">
-                  {config.label}
+                  {t(config.label)}
                   {subcategory ? ` • ${subcategory}` : ""}
                 </div>
               </motion.div>

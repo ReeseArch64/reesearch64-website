@@ -1,0 +1,110 @@
+{
+  "techStack": {
+    "title": "Tecnologías que Utilizo",
+    "searchPlaceholder": "Buscar Stacks, Librerías, Lenguajes...",
+    "emptySearchMessage": "Escribe algo para buscar tecnologías.",
+    "noResultsMessage": "No se encontraron tecnologías."
+  },
+  "categories": {
+    "langs": "Lenguajes",
+    "frameworks": "Frameworks",
+    "orms": "ORMs",
+    "tools": "Herramientas",
+    "cloud": "Cloud",
+    "databases": "Bases de Datos",
+    "devops": "DevOps",
+    "runtimes": "Entornos de Ejecución",
+    "packageManagers": "Gestores de Paquetes",
+    "testing": "Pruebas",
+    "design": "Diseño",
+    "methodologies": "Metodologías",
+    "versionControl": "Control de Versiones",
+    "architecture": "Arquitectura",
+    "other": "Otro"
+  },
+  "loading": "Cargando...",
+  "error": {
+    "loading": "Error al cargar datos"
+  },
+  "tabNews": {
+    "title": "Últimas Publicaciones",
+    "fetchError": "Error al cargar publicaciones de TabNews",
+    "unknownError": "Ocurrió un error desconocido",
+    "retry": "Intentar nuevamente",
+    "noPosts": "No se encontraron publicaciones",
+    "viewAll": "Ver todas en TabNews",
+    "noContent": "No hay contenido disponible"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "downloadCV": "Descargar CV",
+    "changeLanguage": "Cambiar idioma",
+    "emptyMessage": "Aún no hay información sobre mí.",
+    "keywords": {
+      "developer": "desarrollador",
+      "engineer": "ingeniero",
+      "specialist": "especialista",
+      "technology": "tecnología",
+      "experience": "experiencia",
+      "skills": "habilidades",
+      "projects": "proyectos",
+      "professional": "profesional"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Interesado en trabajar juntos? ¡Contáctame!",
+    "noContactInfo": "No hay información de contacto disponible en este momento.",
+    "socialTitle": "Redes Sociales",
+    "noSocialInfo": "No hay redes sociales registradas en este momento.",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "tiktok": "TikTok"
+    }
+  },
+  "header": {
+    "ariaLabel": "Encabezado con información personal",
+    "avatarAlt": "Foto de perfil de {name}",
+    "nameAriaLabel": "Nombre: {name}",
+    "roleAriaLabel": "Rol: {role}, Nivel: {level}",
+    "locationAriaLabel": "Ubicación: {location}",
+    "languagesAriaLabel": "Idiomas: {languages}",
+    "languages": "Idiomas",
+    "navAriaLabel": "Navegación principal",
+    "contactButton": "Contacto",
+    "contactButtonAriaLabel": "Ir a la sección de contacto",
+    "projectsButton": "Proyectos",
+    "projectsButtonAriaLabel": "Ir a la sección de proyectos"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "defaultAlt": "Proyecto {index}",
+    "viewProject": "Ver Proyecto",
+    "noProjects": "No hay proyectos disponibles para los filtros seleccionados",
+    "filters": {
+      "type": "Tipo",
+      "category": "Categoría",
+      "all": "Todos",
+      "personal": "Personal",
+      "professional": "Profesional",
+      "open_source": "Open Source",
+      "freelance": "Freelance",
+      "web": "Web",
+      "mobile": "Mobile",
+      "desktop": "Escritorio",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "fullstack": "Fullstack",
+      "devops": "DevOps",
+      "other": "Otro"
+    }
+  },
+  "footer": {
+    "rightsReserved": "Todos los derechos reservados."
+  }
+}

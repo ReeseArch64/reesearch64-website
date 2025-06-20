@@ -1,0 +1,110 @@
+{
+  "techStack": {
+    "title": "Technologies I Use",
+    "searchPlaceholder": "Search Stacks, Libs, Languages...",
+    "emptySearchMessage": "Type something to search technologies.",
+    "noResultsMessage": "No technologies found."
+  },
+  "categories": {
+    "langs": "Languages",
+    "frameworks": "Frameworks",
+    "orms": "ORMs",
+    "tools": "Tools",
+    "cloud": "Cloud",
+    "databases": "Databases",
+    "devops": "DevOps",
+    "runtimes": "Runtimes",
+    "packageManagers": "Package Managers",
+    "testing": "Testing",
+    "design": "Design",
+    "methodologies": "Methodologies",
+    "versionControl": "Version Control",
+    "architecture": "Architecture",
+    "other": "Other"
+  },
+  "loading": "Loading...",
+  "error": {
+    "loading": "Error loading data"
+  },
+  "tabNews": {
+    "title": "Latest Posts",
+    "fetchError": "Failed to load posts from TabNews",
+    "unknownError": "An unknown error occurred",
+    "retry": "Try again",
+    "noPosts": "No posts found",
+    "viewAll": "View all on TabNews",
+    "noContent": "No content available"
+  },
+  "about": {
+    "title": "About Me",
+    "downloadCV": "Download CV",
+    "changeLanguage": "Change language",
+    "emptyMessage": "No information about me yet.",
+    "keywords": {
+      "developer": "developer",
+      "engineer": "engineer",
+      "specialist": "specialist",
+      "technology": "technology",
+      "experience": "experience",
+      "skills": "skills",
+      "projects": "projects",
+      "professional": "professional"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Interested in working together? Get in touch!",
+    "noContactInfo": "No contact information available at the moment.",
+    "socialTitle": "Social Media",
+    "noSocialInfo": "No social media registered at the moment.",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "tiktok": "TikTok"
+    }
+  },
+  "header": {
+    "ariaLabel": "Personal information header",
+    "avatarAlt": "Profile photo of {name}",
+    "nameAriaLabel": "Name: {name}",
+    "roleAriaLabel": "Role: {role}, Level: {level}",
+    "locationAriaLabel": "Location: {location}",
+    "languagesAriaLabel": "Languages: {languages}",
+    "languages": "Languages",
+    "navAriaLabel": "Main navigation",
+    "contactButton": "Contact",
+    "contactButtonAriaLabel": "Go to contact section",
+    "projectsButton": "Projects",
+    "projectsButtonAriaLabel": "Go to projects section"
+  },
+  "projects": {
+    "title": "Projects",
+    "defaultAlt": "Project {index}",
+    "viewProject": "View Project",
+    "noProjects": "No projects available for selected filters",
+    "filters": {
+      "type": "Type",
+      "category": "Category",
+      "all": "All",
+      "personal": "Personal",
+      "professional": "Professional",
+      "open_source": "Open Source",
+      "freelance": "Freelance",
+      "web": "Web",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "fullstack": "Fullstack",
+      "devops": "DevOps",
+      "other": "Other"
+    }
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved."
+  }
+}

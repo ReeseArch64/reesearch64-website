@@ -1,6 +1,5 @@
 {
   "name": "reesearch64",
-  "version": "1.0.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
